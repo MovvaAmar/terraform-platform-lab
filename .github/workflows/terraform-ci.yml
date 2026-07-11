@@ -32,3 +32,6 @@ jobs:
         run: |
           pwd
           ls -la
+      - name: Terraform Init (Bootstrap)
+        working-directory: bootstrap
+        run: terraform init
