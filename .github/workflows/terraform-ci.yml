@@ -26,12 +26,19 @@ jobs:
         run: terraform version
       
       - name: Check Terraform Formatting
-        run: terraform fmt -check -recursive
-
+        run: terraform fmt -check -recurs
       - name: Show Repository Structure
         run: |
           pwd
           ls -la
-      - name: Terraform Init (Bootstrap)
-        working-directory: bootstrap
+      - name: Terraform Init 
+        working-directory: workspace-infra/environments/dev
         run: terraform init
+
+      - name: Terraform Validate
+        working-directory: workspace-infra/environments/dev
+        run: terraform validate
+
+      - name: Terraform Plan
+        working-directory: workspace-infra/environments/dev
+        run: terraform plan
