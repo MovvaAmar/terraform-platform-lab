@@ -26,7 +26,7 @@ jobs:
         run: terraform version
       
       - name: Check Terraform Formatting
-        run: terraform fmt -check -recurs
+        run: terraform fmt -check -recursive
       - name: Show Repository Structure
         run: |
           pwd
