@@ -21,9 +21,12 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.13.0
-          
+
       - name: Verify Terraform Installation
         run: terraform version
+      
+      - name: Check Terraform Formatting
+        run: terraform fmt -check -recursive
 
       - name: Show Repository Structure
         run: |
