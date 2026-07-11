@@ -1,0 +1,30 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform.tfstate.lock.info
+
+# Variable files
+*.auto.tfvars
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+
+# Environment variable files
+**/terraform.tfvars
+
+# Ignore local tfvars
+*.tfvars
+!*.tfvars.example
+
+# IDE / OS
+.vscode/
+.DS_Store
+
+# Logs
+*.log
