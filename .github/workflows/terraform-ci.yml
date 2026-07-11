@@ -19,3 +19,7 @@ jobs:
 
       - name: Show Current Directory
         run: pwd
+      - name: Show Repository Structure
+        run: |
+          pwd
+          ls -la
