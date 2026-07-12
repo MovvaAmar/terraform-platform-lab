@@ -15,12 +15,14 @@ override.tf.json
 *_override.tf.json
 
 
-# Environment variable files
-**/terraform.tfvars
-
-# Ignore local tfvars
+# Ignore all tfvars
 *.tfvars
+
+# Keep example files
 !*.tfvars.example
+
+# Allow ONLY the dev environment tfvars
+!workspace-infra/environments/dev/terraform.tfvars
 
 # IDE / OS
 .vscode/
@@ -28,3 +30,6 @@ override.tf.json
 
 # Logs
 *.log
+
+git remote add origin https://github.com/MovvaAmar/terraform-platform-lab.git
+git push -u origin main
