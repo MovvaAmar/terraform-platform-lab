@@ -45,6 +45,13 @@ jobs:
         run: |
           pwd
           ls -la
+      - name: Debug Terraform Files
+        working-directory: workspace-infra/environments/dev
+        run: |
+          pwd
+          ls -la
+          echo "----------------------"
+          cat terraform.tfvars || echo "terraform.tfvars NOT FOUND"
 
       - name: Terraform Init
         working-directory: workspace-infra/environments/dev
