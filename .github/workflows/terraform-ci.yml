@@ -9,13 +9,26 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
 
+    environment: dev
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -24,14 +37,16 @@ jobs:
 
       - name: Verify Terraform Installation
         run: terraform version
-      
+
       - name: Check Terraform Formatting
         run: terraform fmt -check -recursive
+
       - name: Show Repository Structure
         run: |
           pwd
           ls -la
-      - name: Terraform Init 
+
+      - name: Terraform Init
         working-directory: workspace-infra/environments/dev
         run: terraform init
 
